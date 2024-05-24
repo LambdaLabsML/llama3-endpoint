@@ -3,6 +3,13 @@
 See [./README.md](llama3 README.md) for download instructions.
 Rest of this guide assumes you installed all llama3 dependencies, including `requirements.txt`
 
+
+Issue fix on lambda cloud (details in [HF discussion](https://huggingface.co/meta-llama/Meta-Llama-3-8B/discussions/34)):
+```
+python3 -m pip install --upgrade torch 
+```
+
+
 ### Instructions to run the API
 
 Install FastAPI and Uvicorn if you haven't already:
