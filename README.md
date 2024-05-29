@@ -1,5 +1,21 @@
 # Quickstart
 
+
+WIP rewriting using HF only
+(requires accepting agrement through HF and logging in using HF SDK)
+
+```
+python3 -m vllm.entrypoints.api_server \
+    --host=127.0.0.1 \
+    --port=8000 \
+    --model=meta-llama/Meta-Llama-3-8B
+```
+
+
+
+
+---
+
 See [./README.md](llama3 README.md) for download instructions.
 Rest of this guide assumes you installed all llama3 dependencies, including `requirements.txt`
 
