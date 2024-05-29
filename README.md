@@ -9,6 +9,12 @@ Issue fix on lambda cloud (details in [HF discussion](https://huggingface.co/met
 python3 -m pip install --upgrade torch 
 ```
 
+### VLLM inference acceleration
+
+```
+python3 -m pip install vllm
+```
+
 
 ### Instructions to run the API
 
