@@ -1,11 +1,34 @@
 # Quickstart
 
-## Setup inference point
+## Requirements
 
-Access node (1x for 8B model, 8x for 70B model)
+Gain access to Llama3 model on HF, specifically:
+- [meta-llama/Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B)
+- [meta-llama/Meta-Llama-3-70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B)
+
+Create a HF token and *make sure to include the two repositories under the "Repositories permissions" section* (otherwise the model download will fail!).
+
+The minimum hardware requirements is:
+- 1x GPU node for 8B model 
+- 8x GPU node for 70B model
+
+## Setup inference point (Docker)
+
+Note: putting Docker development on-hold for now because using a shared machine and am instructed to avoid any system-wide changes.
+
 ```
-ssh cluster
+docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    --env "HUGGING_FACE_HUB_TOKEN=<secret>" \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:latest \
+    --model meta-llama/Meta-Llama-3-70B
 ```
+
+## Setup inference point (manually)
+
+The following assume I am running on a GPU node with the adequate number of GPUs and the necessary permissions to access the model.
 
 Create dedicated python env
 ```
@@ -19,14 +42,54 @@ Login to huggingface
 huggingface-cli login
 ```
 
-Start model server (download/cache as necessary) 
+Start model server (download/cache as necessary).  
+For 8B model: 
 ```
 python3 -m vllm.entrypoints.openai.api_server \
-    --host=127.0.0.1
-    --port=8000
-    --model=meta-llama/Meta-Llama-3-8B
-
+  --host=127.0.0.1 \
+  --port=8000 \
+  --model=meta-llama/Meta-Llama-3-8B
+```  
+For 70B model (OOM error :/)
 ```
+python3 -m vllm.entrypoints.openai.api_server \
+  --host=127.0.0.1 \
+  --port=8000 \
+  --model=meta-llama/Meta-Llama-3-70B
+```
+
+Attempt to limit memory allocated DID NOT WORK
+1. Mixed precision
+2. Quantization
+
+Mixed precision:
+```
+python3 -m vllm.entrypoints.openai.api_server \
+  --host=127.0.0.1 \
+  --port=8000 \
+  --model=meta-llama/Meta-Llama-3-70B \
+  --dtype=float16 \
+  --max_seq_len=4096 \
+  --tensor_parallel_size=1 \
+  --kv_cache_dtype=float16
+```
+
+Quantization:
+```
+python3 -m vllm.entrypoints.openai.api_server \
+  --host=127.0.0.1 \
+  --port=8000 \
+  --model=meta-llama/Meta-Llama-3-70B \
+  --dtype=float16 \
+  --quantization=INT8 \
+  --max_seq_len=4096 \
+  --tensor_parallel_size=1
+```
+Start port fowarding service (eg ngok)
+```
+ngrok http 8000 (update this)
+```
+
 
 ## Usage
 
@@ -37,18 +100,21 @@ curl (quick test):
 
 python:
 ```
+@traceable(run_type="llm")
+def invoke_llm_local(user_input: str):
+
+    openai_api_key = "EMPTY"
+    openai_api_base = "https://<host>/v1"
+    client = OpenAI(
+        api_key=openai_api_key,
+        base_url=openai_api_base,
+    )
+    return client.completions.create(
+            prompt= user_input,
+            model="meta-llama/Meta-Llama-3-8B",
+            temperature=0.0,
+        )
 ```
-
-
-
-WIP rewriting using HF only
-(requires accepting agrement through HF and logging in using HF SDK)
-
-```
-
-```
-
-
 
 
 -----
