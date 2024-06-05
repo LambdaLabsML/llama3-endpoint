@@ -1,16 +1,60 @@
 # Quickstart
 
+## Setup inference point
+
+Access node (1x for 8B model, 8x for 70B model)
+```
+ssh cluster
+```
+
+Create dedicated python env
+```
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt 
+```
+
+Login to huggingface
+```
+huggingface-cli login
+```
+
+Start model server (download/cache as necessary) 
+```
+python3 -m vllm.entrypoints.openai.api_server \
+    --host=127.0.0.1
+    --port=8000
+    --model=meta-llama/Meta-Llama-3-8B
+
+```
+
+## Usage
+
+curl (quick test):
+```
+```
+
+
+python:
+```
+```
+
+
 
 WIP rewriting using HF only
 (requires accepting agrement through HF and logging in using HF SDK)
 
 ```
-python3 -m vllm.entrypoints.api_server \
-    --host=127.0.0.1 \
-    --port=8000 \
-    --model=meta-llama/Meta-Llama-3-8B
+
 ```
 
+
+
+
+-----
+
+
+# DEPRECATED
 
 
 

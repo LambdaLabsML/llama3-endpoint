@@ -1,5 +1,1 @@
-torch
-fairscale
-fire
-tiktoken==0.4.0
-blobfile
+vllm==0.4.2
