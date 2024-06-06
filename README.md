@@ -50,12 +50,13 @@ python3 -m vllm.entrypoints.openai.api_server \
   --port=8000 \
   --model=meta-llama/Meta-Llama-3-8B
 ```  
-For 70B model (OOM error :/)
+For 70B model (assumes 8x GPU node)
 ```
 python3 -m vllm.entrypoints.openai.api_server \
   --host=127.0.0.1 \
   --port=8000 \
   --model=meta-llama/Meta-Llama-3-70B
+  --tensor-parallel-size 8
 ```
 
 Attempt to limit memory allocated DID NOT WORK
