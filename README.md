@@ -42,7 +42,7 @@ Login to huggingface
 huggingface-cli login
 ```
 
-Start model server (download/cache as necessary).  
+Start model server (download/cache as necessary) in a dedicated `screen` session.  
 For 8B model: 
 ```
 python3 -m vllm.entrypoints.openai.api_server \
@@ -88,7 +88,7 @@ python3 -m vllm.entrypoints.openai.api_server \
 ```
 Start port fowarding service (eg ngok)
 ```
-ngrok http 8000 (update this)
+ngrok http 8000
 ```
 
 
