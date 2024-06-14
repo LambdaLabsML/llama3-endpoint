@@ -1,29 +1,32 @@
 # Quickstart
 
+This guide covers the deployment of a LLama 3 inference endpoint on Lambda Cloud.  
+The Meta Llama 3 series of large language models (LLMs) was developped and launched by Meta and features generative text models available in 8B and 70B sizes. These open source models are recognized for their state of the art performance in common industry benchmarks.
+
 ## Requirements
 
-Gain access to Llama3 model on HF, specifically:
+Gain access to Llama3 model on HuggingFace, specifically:
 - [meta-llama/Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B)
 - [meta-llama/Meta-Llama-3-70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B)
 
-Create a HF token and *make sure to include the llama-3 repositories under the "Repositories permissions" section* (otherwise the token will not have sufficient permission to download the model).
+Create a HuggingFace token and *make sure to include the llama-3 repositories under the "Repositories permissions" section* (otherwise the token will not have sufficient permission to download the model).
 
-The minimum hardware requirements is (cf [meta's recommendations](https://llamaimodel.com/requirements/)):
-- 1x GPU node (16GB) for 8B model 
+The minimum hardware requirements are as follow (see [meta's recommendations](https://llamaimodel.com/requirements/) for more details):
+- 1x GPU node (16GB) for 8B model
 - 8x GPU node (32GB) for 70B model
 
 ## Setup inference point
 
-The following assume I am running on a GPU node with the adequate GPUs and have the necessary permissions on HuggingFace to access the model.
+The following assumes you are using a GPU node with the adequate GPUs and have the necessary permissions on HuggingFace to access the model.
 
-Create dedicated python env
+Create dedicated python environment
 ```
 python3 -m venv .venv
 source .venv/bin/activate
-python3 -m pip install -r requirements.txt 
+python3 -m pip install vllm==0.4.3 huggingface-hub==0.23.2 torch==2.3.0
 ```
 
-Login to huggingface
+Login to HuggingFace
 ```
 huggingface-cli login
 ```
