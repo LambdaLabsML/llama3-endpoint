@@ -31,9 +31,22 @@ huggingface-cli login
 
 
 Deploy llama3 server side
+
+8B model
 ```bash
 python3 -m vllm.entrypoints.openai.api_server \
     --model meta-llama/Meta-Llama-3-8B \
+    --swap-space 16 \
+    --disable-log-requests
+```
+
+* Add --tensor-parallel-size 8 for parallelizing on 8 GPUs
+
+70B model
+```bash
+python3 -m vllm.entrypoints.openai.api_server \
+    --model meta-llama/Meta-Llama-3-70B \
+    --tensor-parallel-size 8 \
     --swap-space 16 \
     --disable-log-requests
 ```
