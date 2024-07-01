@@ -1,6 +1,13 @@
 # Benchmarking step-by-step
 
-Note: run benchmark on same machine as inference server
+This guide covers running inference benchmark for llama3.
+It can be broken down into two steps:
+1. Deploy the inference server
+2. Run the benchmark
+
+Benchmark results will then be printed to stdout.
+
+Note: run the benchmark code on the inference server.
 
 Clone benchmark code
 ```bash
