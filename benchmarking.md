@@ -1,9 +1,6 @@
 # Benchmarking step-by-step
 
-Notes:
-* Running benchmark on same machine as server
-* Running benchmark on llama-3-8B model for 1x GPU nodes
-
+Note: run benchmark on same machine as inference server
 
 Clone benchmark code
 ```bash
