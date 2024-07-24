@@ -23,7 +23,8 @@ wget https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/r
 
 Create dedicated python environment
 ``` bash
-apt install python3.10-venv
+sudo apt update
+sudo apt install python3.10-venv
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install vllm==0.5.0.post1 huggingface-hub==0.23.2 torch==2.3.0
