@@ -50,4 +50,4 @@ docker run \
      --disable-log-requests \
      --tensor-parallel-size 8 # for parallelize over 8 GPUs
 ```
-* Note: `tensor-parallel` is not needed and not recommended for llama-3 8B
+Note: On H100 and on A100 instances, `--tensor-parallel-size 8` is not needed and not recommended for llama 3 8B, but is for llama 3 70B.
