@@ -66,10 +66,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-
-## Serve the model
-
-### Download the model in advance (recommended)
+## Download the model in advance (optional and recommended)
 
 Authenticate with Hugging Face to download the model
 ```bash
@@ -85,6 +82,8 @@ The model will be saved to:
 ```
 `~/.cache/huggingface/hub/models/`
 ```
+
+## Serve the model
 
 If you have already downloaded the model in the previous step, then set the model path **as it will be in the Docker container**.
 For example, if model path on the host is like `~/.cache/huggingface/`
