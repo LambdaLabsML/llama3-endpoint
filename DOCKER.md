@@ -1,14 +1,18 @@
 # Serving of llama 3.1 (8B, 70B and 405B FP8)
 
-This guide covers serving llama 3.1 in 8B, 70B and 405B size on a multi-GPU single node environment.
+This guide covers serving llama 3.1 in 8B, 70B and 405B size on a multi-GPU single node environment.  
+Checkout performance benchmark 
 
-Hardware requirements
+## Hardware requirements
 | Model              | Instance type       |
 |--------------------|----------------|
 | [llama 3.1 8B](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)       | 1x A100 or 1x H100  |
 | [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)      | 8x A100 or 8x H100  |
 | [llama 3.1 405B FP8](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct-FP8) | 8x H100             |
 
+(WIP) Checkout performance benchmark for the different model and instance types [here](https://github.com/LambdaLabsML/llama3-endpoint/tree/main/benchmark_logs).
+
+## Serving guide
 
 Steps:
 * [Install Docker and NVIDIA Container Toolkit (skip on Lambda Cloud)](#install-docker-and-nvidia-container-toolkit)
