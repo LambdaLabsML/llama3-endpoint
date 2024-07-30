@@ -21,12 +21,11 @@ We recommend the instruct fine-tuned models for most users and will refer to the
 ## Serving guide
 
 Steps:
-* [Install Docker and NVIDIA Container Toolkit (skip on Lambda Cloud)](#install-docker-and-nvidia-container-toolkit)
-* [Configure NVIDIA Container Toolkit](#configure-nvidia-container-toolkit)
+* [Setup Docker and NVIDIA Container Toolkit (skip on Lambda Cloud)](#setup-docker-and-nvidia-container-toolkit)
 * [Download the model in advance (recommended)](#download-the-model-in-advance-recommended)
 * [Serve the model](#serve-the-model)
 
-## Install Docker and NVIDIA Container Toolkit
+## Setup Docker and NVIDIA Container Toolkit
 
 Setup Docker (skip if using Lambda Cloud)
 ```bash
@@ -51,14 +50,13 @@ sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
 ```
 
-## Configure NVIDIA Container Toolkit
+Configure NVIDIA Container Toolkit
 ```bash
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ```
 
-## Add Current User to Docker Group
-
+Add Current User to Docker Group
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
