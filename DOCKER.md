@@ -99,8 +99,8 @@ docker run \
 | Model     | Tensor parallel          | Other Config                                 | Instance Type          |
 |-----------|-------------------------------|----------------------------------------------|------------------------|
 | 8B        | Do not use --tensor-parallel-size | Will use a single GPU                    | 1x A100 or 1x H100  |
-| 70B       | --tensor-parallel-size 2      | --max-model-len 8192                          | 8x A100 or 8x H100  |
-| 70B       | --tensor-parallel-size 4      |                                               | 8x A100 or 8x H100  |
-| 405B FP8  | --tensor-parallel-size 8      |                                               | 8x H100             |
+| 70B       | `--tensor-parallel-size 2`      | `--max-model-len 8192`                     | 8x A100 or 8x H100  |
+| 70B       | `--tensor-parallel-size 4`      |                                            | 8x A100 or 8x H100  |
+| 405B FP8  | `--tensor-parallel-size 8`      |                                            | 8x H100             |
 
 
