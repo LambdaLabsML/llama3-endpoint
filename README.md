@@ -1,6 +1,9 @@
 # Quickstart
 
-This guide covers the deployment of a LLama 3 inference endpoint on Lambda Cloud. Please see [these instructions for deploying with Docker](https://github.com/LambdaLabsML/llama3-endpoint/blob/main/DOCKER.md).  
+Please see [the updated instructions for deploying llama 3.1 with Docker](https://github.com/LambdaLabsML/llama3-endpoint/blob/main/DOCKER.md).
+
+
+This guide covers the deployment of a LLama 3 inference endpoint on Lambda Cloud.  
 The Meta Llama 3 series of large language models (LLMs) was developped and launched by Meta and features generative text models available in 8B and 70B sizes. These open source models are recognized for their state of the art performance in common industry benchmarks.
 
 ## Requirements
