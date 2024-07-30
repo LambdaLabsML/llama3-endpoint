@@ -92,7 +92,7 @@ docker run \
      --model {MODEL} \
      --swap-space 16 \
      --disable-log-requests \
-     # --tensor-parallel-size 4 # for parallelizing across 4 GPUs
+     # --tensor-parallel-size 4 # for parallelizing across 4 GPUs (cf config recommendations)
 ```
 
 ## Config recommendations
