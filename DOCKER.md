@@ -4,9 +4,8 @@ This guide covers serving llama 3.1 in 8B, 70B and 405B FP8 on a multi-GPU singl
 
 ## Models
 
+We recommend the instruct fine-tuned models for most users and will refer to these models by default going forward.  
 We use the FP8 quantized 405B models for this guide as the non quantized model requires a multi-node environment. Checkout out [this guide](https://docs.lambdalabs.com/1-click-clusters/serving-llama-3.1-405b-on-a-lambda-1-click-cluster) for deploying the non quantized llama 3.1 405B model on a Lambda 1cc cluster.  
-We recommend the instruct fine-tuned models for most users and will refer to these models by default going forward.
-
 
 ## Hardware requirements
 | Model              | Instance type       |
@@ -21,8 +20,7 @@ We recommend the instruct fine-tuned models for most users and will refer to the
 ## Serving guide
 
 1. [Setup Docker and NVIDIA Container Toolkit](#setup-docker-and-nvidia-container-toolkit)
-2. Download the model (optional and recommended)
-3. [Serve the model](#serve-the-model)
+2. [Serve the model](#serve-the-model)
 
 ## Setup Docker and NVIDIA Container Toolkit
 
