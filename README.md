@@ -1,6 +1,6 @@
 # Quickstart
 
-Please see [the updated instructions for deploying llama 3.1 with Docker](https://github.com/LambdaLabsML/llama3-endpoint/blob/main/DOCKER.md).
+**Please see [the updated instructions for deploying llama 3.1 with Docker](https://github.com/LambdaLabsML/llama3-endpoint/blob/main/DOCKER.md).**
 
 
 This guide covers the deployment of a LLama 3 inference endpoint on Lambda Cloud.  
