@@ -102,5 +102,5 @@ docker run \
 | 8B        | Do not use                    |                          |
 | 70B       | `--tensor-parallel-size 2`      | `--max-model-len 8192`                          |
 | 70B       | `--tensor-parallel-size 4`      |                                               |
-| 405B FP8  | `--tensor-parallel-size 8`      | Use H100 x8 instance type; A100 lacks FP8 cores and are much slower for this model |
+| 405B FP8  | `--tensor-parallel-size 8`      |                                                 |
 
