@@ -11,10 +11,10 @@ Hardware requirements
 
 
 Steps:
-* [Install Docker, NVIDIA Container Toolkit (skip if on lambda cloud)](# Install Docker and NVIDIA Container Toolkit)
-* [Configure NVIDIA Container Toolkit](# Configure NVIDIA Container Toolkit)
-* [Download the model before serving (optional)](# Download the model in advance (recommended))
-* [Serve the model](# Serve the model)
+* [Install Docker and NVIDIA Container Toolkit](#install-docker-and-nvidia-container-toolkit)
+* [Configure NVIDIA Container Toolkit](#configure-nvidia-container-toolkit)
+* [Download the model in advance (recommended)](#download-the-model-in-advance-recommended)
+* [Serve the model](#serve-the-model)
 
 ## Install Docker and NVIDIA Container Toolkit
 
