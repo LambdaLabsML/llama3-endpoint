@@ -1,8 +1,9 @@
 # Single node serving of llama 3.1 (8B, 70B, 405B FP8)
 
-This guide covers serving llama 3.1 in 8B, 70B and 405B FP8 on a multi-GPU single node environment.
+## Models
 
-Note that we use the FP8 quantized 405B models for single node setup as the non quantized model requires a multi-node environment.   For deploying the non quantized 405B model, checkout out [this guide](https://docs.lambdalabs.com/1-click-clusters/serving-llama-3.1-405b-on-a-lambda-1-click-cluster).  
+This guide covers serving llama 3.1 in 8B, 70B and 405B FP8 on a multi-GPU single node environment.  
+We use the FP8 quantized 405B models for single node setup as the non quantized model requires a multi-node environment. Checkout out [this guide](https://docs.lambdalabs.com/1-click-clusters/serving-llama-3.1-405b-on-a-lambda-1-click-cluster) for deploying the non quantized 405B model on a Lambda 1cc cluster.
 We recommend the instruct fine-tuned models for most users and will refer to these models by default going forward.
 
 
