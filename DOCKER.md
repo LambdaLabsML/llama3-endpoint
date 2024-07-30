@@ -21,24 +21,22 @@ We recommend the instruct fine-tuned models for most users and will refer to the
 ## Serving guide
 
 Steps:
-* [Setup Docker and NVIDIA Container Toolkit (skip on Lambda Cloud)](#setup-docker-and-nvidia-container-toolkit)
-* [Download the model in advance (recommended)](#download-the-model-in-advance-recommended)
+* [Setup Docker and NVIDIA Container Toolkit](#setup-docker-and-nvidia-container-toolkit)
 * [Serve the model](#serve-the-model)
 
 ## Setup Docker and NVIDIA Container Toolkit
 
-Setup Docker (skip if using Lambda Cloud)
+Install Docker and NVIDIA Container Toolkit (skip if using Lambda Cloud).
 ```bash
+# Install Docker
 sudo apt update
 sudo apt install -y curl gnupg lsb-release
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io
-```
 
-Setup NVIDIA package repositories (skip if using Lambda Cloud)
-```bash
+# Install the NVIDIA Container Toolkit
 # Add the NVIDIA package repositories
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
@@ -62,7 +60,10 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-## Download the model in advance (recommended)
+
+## Serve the model
+
+### Download the model in advance (recommended)
 
 Authenticate with Hugging Face to download the model
 ```bash
@@ -79,10 +80,6 @@ The model will be saved to:
 `~/.cache/huggingface/hub/models/`
 ```
 
-## Serve the model
-
-### Download the model in before serving
-
 If you have already downloaded the model in the previous step, then set the model path **as it will be in the Docker container**.
 For example, if model path on the host is like `~/.cache/huggingface/`
 ```bash
@@ -95,6 +92,8 @@ Just make sure you correctly authenticated.
 ```bash
 huggingface-cli login --token <YOUR_HF_TOKEN>
 ```
+
+### Deployment
 
 Deploy the inference backend with a `vllm` Docker container.
 ```bash
