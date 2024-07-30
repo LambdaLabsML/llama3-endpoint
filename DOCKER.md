@@ -3,7 +3,7 @@
 This guide covers serving llama 3.1 on a multi-GPU single node environment.
 
 Hardware requirements
-| Model              | Hardware       |
+| Model              | Instance type       |
 |--------------------|----------------|
 | [llama 3.1 8B](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)       | 1x A100 or 1x H100  |
 | [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)      | 8x A100 or 8x H100  |
