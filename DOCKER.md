@@ -1,4 +1,4 @@
-# Serving of llama 3.1 (8B, 70B and 405B FP8)
+# Single node serving of llama 3.1 (8B, 70B, 405B FP8)
 
 This guide covers serving llama 3.1 in 8B, 70B and 405B FP8 on a multi-GPU single node environment.
 
