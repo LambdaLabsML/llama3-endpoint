@@ -26,7 +26,7 @@ Steps:
 
 ## Setup Docker and NVIDIA Container Toolkit
 
-Install Docker and NVIDIA Container Toolkit (skip if using Lambda Cloud).
+Install Docker and NVIDIA Container Toolkit *(skip this step on Lambda Cloud)*.
 ```bash
 # Install Docker
 sudo apt update
