@@ -96,11 +96,13 @@ docker run \
 ```
 
 ## Config recommendations
-| Model     | Tensor parallel          | Other Config                                 | Instance Type          |
-|-----------|-------------------------------|----------------------------------------------|------------------------|
-| 8B        | Do not use --tensor-parallel-size | Will use a single GPU                    | 1x A100 or 1x H100  |
-| 70B       | `--tensor-parallel-size 2`      | `--max-model-len 8192`                     | 8x A100 or 8x H100  |
-| 70B       | `--tensor-parallel-size 4`      |                                            | 8x A100 or 8x H100  |
-| 405B FP8  | `--tensor-parallel-size 8`      |                                            | 8x H100             |
+
+| Model                                                                                     | Tensor parallel           | Other Config          | Instance Type          |
+|-------------------------------------------------------------------------------------------|---------------------------|-----------------------|------------------------|
+| [llama 3.1 8B](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)              | Do not use --tensor-parallel-size | Will use a single GPU  | 1x A100 or 1x H100     |
+| [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)            | `--tensor-parallel-size 2`| `--max-model-len 8192` | 8x A100 or 8x H100     |
+| [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)            | `--tensor-parallel-size 4`|                       | 8x A100 or 8x H100     |
+| [llama 3.1 405B FP8](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct-FP8)  | `--tensor-parallel-size 8`|                       | 8x H100                |
+
 
 
