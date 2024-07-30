@@ -15,8 +15,8 @@ We recommend the instruct fine-tuned models for most users and will refer to the
 | [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)      | 8x A100 or 8x H100  |
 | [llama 3.1 405B FP8](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct-FP8) | 8x H100             |
 
-* *07/30/2024: Performance benchmark for the different model and instance types [here](https://github.com/LambdaLabsML/llama3-endpoint/tree/main/benchmark_logs).*  
-* *This guide will be updated shortly with configuration recommendation to get the most performance out of your setup.*
+*07/30/2024: Performance benchmark for the different model and instance types [here](https://github.com/LambdaLabsML/llama3-endpoint/tree/main/benchmark_logs).*  
+*This guide will be updated shortly with configuration recommendation to get the most performance out of your setup.*
 
 ## Serving guide
 
