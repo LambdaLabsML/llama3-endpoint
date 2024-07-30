@@ -102,7 +102,7 @@ docker run \
 |-------------------------------------------------------------------------------------------|--------------------------------------------|-----------------------------------------------------------------|------------------------|
 | [llama 3.1 8B](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)              | Do not use `--tensor-parallel-size`        | Will use a single GPU                                           | 1xA100 or 1xH100       |
 | [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)            | `--tensor-parallel-size 4`                 | Default context length of 128K requires a minimum of 4x GPUs (80GB each) | 8xA100 or 8xH100       |
-| [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)            | `--tensor-parallel-size 2 --max-model-len 8192` | Can run on 2x GPUs (80GB each) if limiting context window down to 8K from 128K | 8xA100 or 8xH100       |
+| [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)            | `--tensor-parallel-size 2 --max-model-len 8192` | Can run on 2x GPUs (80GB each) if limiting context window to 8K down from 128K | 8xA100 or 8xH100       |
 | [llama 3.1 405B FP8](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct-FP8)  | `--tensor-parallel-size 8`                 |                                                                 | 8xH100                 |
 
 
