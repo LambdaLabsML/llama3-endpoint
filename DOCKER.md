@@ -1,6 +1,6 @@
 # Serving of llama 3.1 (8B, 70B and 405B FP8)
 
-This guide covers serving llama 3.1 on a multi-GPU single node environment.
+This guide covers serving llama 3.1 in 8B, 70B and 405B size on a multi-GPU single node environment.
 
 Hardware requirements
 | Model              | Instance type       |
@@ -9,6 +9,12 @@ Hardware requirements
 | [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)      | 8x A100 or 8x H100  |
 | [llama 3.1 405B FP8](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct-FP8) | 8x H100             |
 
+
+Steps:
+* [Install Docker, NVIDIA Container Toolkit (skip if on lambda cloud)](# Install Docker and NVIDIA Container Toolkit)
+* [Configure NVIDIA Container Toolkit](# Configure NVIDIA Container Toolkit)
+* [Download the model before serving (optional)](# Download the model in advance (recommended))
+* [Serve the model](# Serve the model)
 
 ## Install Docker and NVIDIA Container Toolkit
 
@@ -65,7 +71,7 @@ The model will be saved to:
 `~/.cache/huggingface/hub/models/`
 ```
 
-## Serve model
+## Serve the model
 
 ### Download the model in before serving
 
