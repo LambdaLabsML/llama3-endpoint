@@ -5,9 +5,9 @@ This guide covers serving llama 3.1 on a multi-GPU single node environment.
 Hardware requirements
 | Model              | Hardware       |
 |--------------------|----------------|
-| llama 3.1 8B       | 1x A100 or 1x H100  |
-| llama 3.1 70B      | 8x A100 or 8x H100  |
-| llama 3.1 405B FP8 | 8x H100             |
+| [llama 3.1 8B](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)       | 1x A100 or 1x H100  |
+| [llama 3.1 70B](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct)      | 8x A100 or 8x H100  |
+| [llama 3.1 405B FP8](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct-FP8) | 8x H100             |
 
 
 ## Install Docker and NVIDIA Container Toolkit
