@@ -1,7 +1,18 @@
-# Dockerized deployment for llama 3
+# Serving of llama 3.1 (8B, 70B and 405B FP8)
 
-Outside of Lambda On-demand instance, a way to ensure correct and consistent environment for the LLM deployment is to use Docker.
-Here are the steps to deploy llama 3 with `vllm` on Docker.
+This guide covers serving llama 3.1 on a multi-GPU single node environment.
+
+Hardware requirements
+| Model              | Hardware       |
+|--------------------|----------------|
+| llama 3.1 8B       | 1x A100 or 1x H100  |
+| llama 3.1 70B      | 8x A100 or 8x H100  |
+| llama 3.1 405B FP8 | 8x H100             |
+
+
+## Install Docker and NVIDIA Container Toolkit
+
+*Note: Skip this step if already installed, e.g. if using Lambda Cloud.*
 
 Setup Docker:
 ```bash
@@ -24,20 +35,56 @@ sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
 ```
 
-Add current user to docker group (to avoid using `sudo docker` next)
+## Configure NVIDIA Container Toolkit
+```bash
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+```
+
+## Add Current User to Docker Group
+
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
 ```
+
+## Download the model in advance (recommended)
 
 Authenticate with Hugging Face to download the model
 ```bash
 huggingface-cli login --token <YOUR_HF_TOKEN>
 ```
 
-Deploy llama 3 inference backend with `vllm` Docker image.
+Download the model:
 ```bash
-MODEL=meta-llama/Meta-Llama-3-70B
+huggingface-cli dowload model meta-llama/Meta-Llama-3.1-70B-Instruct
+```
+
+The model will be saved to:
+```
+`~/.cache/huggingface/hub/models/`
+```
+
+## Serve model
+
+### Download the model in before serving
+
+If you have already downloaded the model in the previous step, then set the model path **as it will be in the Docker container**.
+For example, if model path on the host is like `~/.cache/huggingface/`
+```bash
+MODEL=
+```
+
+If you have not dowloaded the model already, it will be downloaded upon serving.
+
+Just make sure you correctly authenticated.
+```bash
+huggingface-cli login --token <YOUR_HF_TOKEN>
+```
+
+Deploy the inference backend with a `vllm` Docker container.
+```bash
+MODEL=meta-llama/Meta-Llama-3.1-70B
 docker run \
      --runtime nvidia \
      --gpus all \
