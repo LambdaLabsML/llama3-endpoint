@@ -21,7 +21,7 @@ We recommend the instruct fine-tuned models for most users and will refer to the
 ## Serving guide
 
 1. [Setup Docker and NVIDIA Container Toolkit](#setup-docker-and-nvidia-container-toolkit)
-2. Download the model (optional and recommeded)
+2. Download the model (optional and recommended)
 3. [Serve the model](#serve-the-model)
 
 ## Setup Docker and NVIDIA Container Toolkit
