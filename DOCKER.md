@@ -66,43 +66,24 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-## Download the model in advance (optional and recommended)
+## Serve the model
+
+Create a Hugging Face token and make sure to include the llama 3.1 repositories under the "Repositories permissions" section (otherwise the token will not have sufficient permission to download the model).
 
 Authenticate with Hugging Face to download the model
 ```bash
 huggingface-cli login --token <YOUR_HF_TOKEN>
 ```
 
-Download the model:
+Set model name:
 ```bash
-huggingface-cli dowload model meta-llama/Meta-Llama-3.1-70B-Instruct
+MODEL=meta-llama/Meta-Llama-3.1-8B-Instruct
+#MODEL=meta-llama/Meta-Llama-3.1-70B-Instruct
+#MODEL=meta-llama/Meta-Llama-3.1-405B-Instruct-FP8
 ```
-
-The model will be saved to:
-```
-`~/.cache/huggingface/hub/models/`
-```
-
-## Serve the model
-
-If you have already downloaded the model in the previous step, then set the model path **as it will be in the Docker container**.
-For example, if model path on the host is like `~/.cache/huggingface/`
-```bash
-MODEL=
-```
-
-If you have not dowloaded the model already, it will be downloaded upon serving.
-
-Just make sure you correctly authenticated.
-```bash
-huggingface-cli login --token <YOUR_HF_TOKEN>
-```
-
-### Deployment
 
 Deploy the inference backend with a `vllm` Docker container.
 ```bash
-MODEL=meta-llama/Meta-Llama-3.1-70B
 docker run \
      --runtime nvidia \
      --gpus all \
@@ -113,6 +94,15 @@ docker run \
      --model {MODEL} \
      --swap-space 16 \
      --disable-log-requests \
-     --tensor-parallel-size 8 # for parallelize over 8 GPUs
+     # --tensor-parallel-size 4 # for parallelizing across 4 GPUs
 ```
-Note: On H100 and on A100 instances, `--tensor-parallel-size 8` is not needed and not recommended for llama 3 8B, but is for llama 3 70B.
+
+Config recommendations:
+* For 8B :
+  * do not use `--tensor-parallel-size` (will use a single GPU)
+* For 70B:
+  * Use `--tensor-parallel-size 2` with `--max-model-len 8192`
+  * Use `--tensor-parallel-size 4` otherwise
+* For 405B FP8:
+  * Use `--tensor-parallel-size 8`
+  * Use H100 x8 instance type because A100 lack FP8 cores and are much slower for this model
