@@ -22,35 +22,9 @@ We use the FP8 quantized 405B models for this guide as the non quantized model r
 1. [Setup Docker and NVIDIA Container Toolkit](#setup-docker-and-nvidia-container-toolkit)
 2. [Serve the model](#serve-the-model)
 
-## Setup Docker and NVIDIA Container Toolkit
+### Setup Docker and NVIDIA Container Toolkit
 
-Install Docker and NVIDIA Container Toolkit *(skip this step on Lambda Cloud)*.
-```bash
-# Install Docker
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Install the NVIDIA Container Toolkit
-curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
-  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
-    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
-    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
-
-sudo apt-get update
-sudo apt-get install -y nvidia-container-toolkit
-```
+*The rest of this guide assumes that your environment has Docker and NVIDIA Container Toolkit installed, as is the case for Lambda Cloud instances. Please refer to the [Docker guide](https://docs.docker.com/engine/install/ubuntu/) and to the [NVIDIA guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) if you are not using Lambda Cloud and need to install these requirements.*
 
 Configure NVIDIA Container Toolkit
 ```bash
@@ -64,7 +38,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-## Serve the model
+### Serve the model
 
 Create a Hugging Face token and make sure to include the llama 3.1 repositories under the "Repositories permissions" section (otherwise the token will not have sufficient permission to download the model).
 
