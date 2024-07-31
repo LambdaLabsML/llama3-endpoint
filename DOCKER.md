@@ -19,10 +19,10 @@ We use the FP8 quantized 405B models for this guide as the non quantized 405B mo
 
 ## Serving guide
 
-1. [Setup Docker and NVIDIA Container Toolkit](#setup-docker-and-nvidia-container-toolkit)
+1. [Setup Docker](#setup-docker)
 2. [Serve the model](#serve-the-model)
 
-### Setup Docker and NVIDIA Container Toolkit
+### Setup Docker
 
 *The rest of this guide assumes that your environment has Docker and NVIDIA Container Toolkit installed, as is the case for Lambda Cloud instances. Please refer to the [Docker guide](https://docs.docker.com/engine/install/ubuntu/) and to the [NVIDIA guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) if you are not using Lambda Cloud and need to install these requirements.*
 
