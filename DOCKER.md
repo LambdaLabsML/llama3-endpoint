@@ -51,7 +51,6 @@ MODEL=meta-llama/Meta-Llama-3.1-8B-Instruct
 Deploy the inference backend with a `vllm` Docker container.
 ```bash
 docker run \
-     --runtime nvidia \
      --gpus all \
      -v ~/.cache/huggingface:/root/.cache/huggingface \
      -p 8000:8000 \
