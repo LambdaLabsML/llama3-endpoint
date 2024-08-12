@@ -56,7 +56,7 @@ docker run \
      -p 8000:8000 \
      --ipc=host \
      vllm/vllm-openai:latest \
-     --model {MODEL} \
+     --model ${MODEL} \
      --swap-space 16 \
      --disable-log-requests \
      # --tensor-parallel-size 4 \ # for parallelizing across 4 GPUs
